@@ -1,5 +1,7 @@
 # NIDUC-Projekt1
 Projekt z NIDUC
-Autorzy:/n
-Kacper Kucharczyk /n
+Autorzy:
+
+Kacper Kucharczyk  
+
 Artur Sobolewski 
