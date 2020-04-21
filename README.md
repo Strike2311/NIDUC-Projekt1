@@ -2,6 +2,6 @@
 Projekt z NIDUC
 Autorzy:
 
-Kacper Kucharczyk  
+Kacper Kucharczyk   
 
 Artur Sobolewski 
