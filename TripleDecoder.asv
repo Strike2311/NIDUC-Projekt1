@@ -1,5 +1,5 @@
 function [Y] = TripleDecoder(X)
-    index = 0;%zlicza przejscia pierwszej petli for
+    index = 0;%
     Y = zeros(1,length(X)/3);%do tej tabeli wpisywany bedzie ostatecznie odkodowany ciag znakow
     %petla ktora przeskakuje o 3 pola zatrzymujac sie na pierwszym bicie z
     %kazdej trojki

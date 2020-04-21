@@ -10,19 +10,20 @@ hammingCodeTestBER = zeros(1,150);
 
 
 for i=1:tests
+    %kodowanie dwoma sposobami tego samego ciagu liczb
     tripleCode = TripleEncoder(inputArray);
     hammingCode = HammingEncoder(inputArray);
-    
+    % 'przepuszczanie' wygenerowanych ciagow przez kanal transmisyjny
     tripleCode = GilbertChannel(tripleCode);
     hammingCode = GilbertChannel(hammingCode);
-    
+    %odkodowanie obu ciagow
     outputTripleArray = TripleDecoder(tripleCode);
     outputHammingArray = HammingDecoder(hammingCode);
-    
+    %obliczanie BER dla obu ciagow 
     tripleCodeTestBER(i) = BER(inputArray,outputTripleArray);
     hammingCodeTestBER(i) = BER(inputArray,outputHammingArray);
 end
-
+%wyniki eksperymentu w postaci srednich wszystkich wynikow
 x = "Srednie BER dla kodu potrajajacego: "
 mean(tripleCodeTestBER)
 x = "Srednie BER dla kodu hamminga: "
