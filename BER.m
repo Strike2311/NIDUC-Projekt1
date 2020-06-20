@@ -1,9 +1,12 @@
-function [result] = BER(X,Y)
+function [result, corr] = BER(X,Y)
 
 size = 0;
-for i=1:length(X)
+corr = 0;
+for i=1:(length(X))
     if X(i) == ~Y (i)
-        size = size +1;
+        size = size + 1;
+    else
+        corr = corr + 1;
     end
 end
 

@@ -1,4 +1,4 @@
-size = 1500; %liczba elementow tablicy
+size = 3000; %liczba elementow tablicy
 tests = 150; %liczba testow ktore zostan¹ przeprowadzone
 inputArray = Generator(size); %Generowanie losowej tablicy o zadanej wielkosci m
 outputTripleArray = zeros(1,size);
@@ -19,11 +19,19 @@ for i=1:tests
     outputTripleArray = TripleDecoder(tripleCode);
     outputHammingArray = HammingDecoder(hammingCode);
     
-    tripleCodeTestBER(i) = BER(inputArray,outputTripleArray);
-    hammingCodeTestBER(i) = BER(inputArray,outputHammingArray);
+    [tripleCodeTestBER(i), tripleCorr(i)] = BER(inputArray,outputTripleArray);
+    [hammingCodeTestBER(i), hammingCorr(i)] = BER(inputArray,outputHammingArray);
 end
+
+tripleCodeLen = length(tripleCode);
+hammingCodeLen = length(hammingCode);
+
 
 x = "Srednie BER dla kodu potrajajacego: "
 mean(tripleCodeTestBER)
 x = "Srednie BER dla kodu hamminga: "
 mean(hammingCodeTestBER)
+x = "Srednia efektywnoœæ E dla kodu potrajajacego: "
+tripleEf = mean(tripleCorr)/tripleCodeLen
+x = "Srednia efektywnoœæ dla kodu hamminga: "
+hammingEf = mean(hammingCorr)/(hammingCodeLen)
