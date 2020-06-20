@@ -1,24 +1,24 @@
 function [Y] = GilbertChannel(X)
     
-    %Prawdopodobieñstwo ¿e przejdzie ze stanu Z³ego na Dobry
+    %Prawdopodobienstwo ze przejdzie ze stanu Zlego na Dobry
     probForGood = 0.6;
     
-    %Prawdopodobieñstwo ¿e przejdzie ze stanu Dobrego na Z³y
+    %Prawdopodobienstwo ze przejdzie ze stanu Dobrego na Zly
     probForBad = 0.2;
-    
+    %Prawdopodobienstwo przeklamania bitu w stanie Zlym
     probForSwitch = 0.6;
     
-    %aktualny status Dobry - 0 Z³y - 1
+    %aktualny status Dobry - 0 Zly - 1
     status = 0;
     Y = zeros(1,length(X));
     for i=1:length(X)
-        %Wpisanie kolejnej zawartoœci tablicy do zmiennej input
+        %Wpisanie kolejnej zawartosci tablicy do zmiennej input
         input = X(i);
         %Sprawdzenie czy znajduje sie w stanie Dobrym
         if status == 0
             random = rand();
-            
-            if random < probForBad
+            %zmiana na stan Zly, gdy liczba jest <= probForBad
+             if random <= probForBad
                status = 1;
                
             end
@@ -27,7 +27,8 @@ function [Y] = GilbertChannel(X)
         %jest w stanie Z³ym
         else
             random = rand();
-            if random < probForSwitch
+         
+            if random <= probForSwitch  
                 input = ~input;
                 
             end
@@ -39,6 +40,7 @@ function [Y] = GilbertChannel(X)
             
         end
        Y(i) = input;
+    end
             
     
 end
